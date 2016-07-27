@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  include 'bcrypt'
+  #include 'bcrypt'
   has_many :lists
   has_many :items, through: :lists
   has_secure_password

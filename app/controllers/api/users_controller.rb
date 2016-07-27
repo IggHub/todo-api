@@ -8,7 +8,13 @@ class Api::UsersController < ApiController
 
    def show
      @user = User.find_by(id: params[:id])
-     render json: @user, each_serializer: UserSerializer
+     @no_user_found = User.all #other alternative when user ID not found?
+     if @user.nil?
+       flash[:notice] = "No user found"
+       render json: @no_user_found, each_serializer: UserSerializer
+     else
+      render json: @user, each_serializer: UserSerializer
+    end
    end
 
    def create

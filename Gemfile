@@ -22,7 +22,11 @@ gem 'figaro'
 gem 'pry'
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
+<<<<<<< HEAD
 gem 'responders', '~>2.0'
+=======
+gem 'responders', '~> 2.0' 
+>>>>>>> ec3907124bb357f4a5e9005e76bb27b2f3f64d77
 
 group :development, :test do
   gem 'byebug'

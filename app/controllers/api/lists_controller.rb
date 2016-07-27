@@ -10,7 +10,8 @@ class Api::ListsController < ApiController
   end
 
   def show
-    @list = List.find_all_by(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
+    @list = @user.lists.find(params[:id])
     render json: @list, each_serializer: ListSerializer
   end
 

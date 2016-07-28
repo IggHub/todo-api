@@ -16,7 +16,10 @@ class Api::ListsController < ApiController
   end
 
   def create
-    @list = List.new(list_params)
+     @user = User.find_by(id: params[:user_id])
+#    @list = @user.lists.build(list_params)
+
+     @list = List.new(list_params)
     if @list.save
       render json: @list
     else
@@ -25,8 +28,9 @@ class Api::ListsController < ApiController
   end
 
   private
+
   def list_params
-    params.require(:lists).permit(:name)
+    params.require(:list).permit(:name, :permission, :user_id)
   end
 
 end

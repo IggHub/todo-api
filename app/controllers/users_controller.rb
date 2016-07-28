@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
   attr_accessor :username, :email, :password
 
   def new

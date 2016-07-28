@@ -16,8 +16,8 @@ class Api::ListsController < ApiController
   end
 
   def create
-     @user = User.find_by(id: params[:user_id])
-#    @list = @user.lists.build(list_params)
+    # @user = User.find_by(id: params[:user_id])
+    #@list = @user.lists.build(list_params)
 
      @list = List.new(list_params)
     if @list.save
@@ -27,10 +27,23 @@ class Api::ListsController < ApiController
     end
   end
 
+  def destroy
+    begin
+      list = List.find(params[:id])
+      list.destroy
+
+      render json: {}, status: :no_content
+    rescue ActiveRecord::RecordNotFound
+      render :json => {}, :status => :not_found
+    end
+  end
   private
 
   def list_params
     params.require(:list).permit(:name, :permission, :user_id)
+    #params.require(:name)
+    #params.require(:permission)
+    #params.require(:user_id)
   end
 
 end

@@ -3,16 +3,23 @@ class Api::ItemsController < ApiController
   respond_to :json
 
   def index
-    @items = Item.all
-    render json: @items, each_serializer: ItemSerializer
+    list = List.find_by(id: params[:list_id])
+    items = list.items
+    render json: items, each_serializer: ItemSerializer
+  end
+
+  def show
+    list = List.find_by(id: params[:list_id])
+    item = list.items.find(params[:id])
+    render json: item, each_serializer: ItemSerializer
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      render json: @item
+    item = Item.new(item_params)
+    if item.save
+      render json: item
     else
-      render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: item.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

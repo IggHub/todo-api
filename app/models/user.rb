@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :items, through: :lists
   has_secure_password
+
+  validates :username, presence: true
 =begin
   def password
     @password ||= Password.new(password_hash)

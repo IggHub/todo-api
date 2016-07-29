@@ -20,7 +20,7 @@ class Api::ListsController < ApiController
     #@list = @user.lists.build(list_params)
 
      @list = List.new(list_params)
-    if @list.save
+    if @list.save #&& list_params(:name) exists...
       render json: @list
     else
       render json: { errors: @list.errors.full_messages }, status: :unprocessable_entity

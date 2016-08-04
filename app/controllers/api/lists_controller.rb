@@ -6,13 +6,13 @@ class Api::ListsController < ApiController
 #    @user = User.find(3).lists #need to make n in User.find(n).lists to correspond to users/n/lists! How to do that?
     @user = User.find_by(id: params[:user_id])
     @lists = @user.lists
-    render json: @lists, each_serializer: ListSerializer
+    render json: @lists, each_serializer: ListSerializer, adapter: :json
   end
 
   def show
     @user = User.find_by(id: params[:user_id])
     @list = @user.lists.find(params[:id])
-    render json: @list, each_serializer: ListSerializer
+    render json: @list, each_serializer: ListSerializer, adapter: :json
   end
 
   def create

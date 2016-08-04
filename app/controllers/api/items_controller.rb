@@ -5,13 +5,13 @@ class Api::ItemsController < ApiController
   def index
     list = List.find_by(id: params[:list_id])
     items = list.items
-    render json: items, each_serializer: ItemSerializer
+    render json: items, each_serializer: ItemSerializer, adapter: :json
   end
 
   def show
     list = List.find_by(id: params[:list_id])
     item = list.items.find(params[:id])
-    render json: item, each_serializer: ItemSerializer
+    render json: item, each_serializer: ItemSerializer, adapter: :json
   end
 
   def create

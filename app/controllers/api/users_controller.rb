@@ -4,7 +4,11 @@ class Api::UsersController < ApiController
 
    def index
      @users = User.all
-     render json: @users, each_serializer: UserSerializer
+#     my_object = { :array => [1, 2, 3, { :sample => "hash"} ], :foo => "bar" }
+     render json: @users, each_serializer: UserSerializer, adapter: :json
+#    render json: JSON.pretty_generate(my_object, each_serializer: UserSerializer)
+#    render json: JSON.pretty_generate(@users.to_json), each_serializer: UserSerializer
+
    end
 
    def show
@@ -14,7 +18,7 @@ class Api::UsersController < ApiController
        flash[:notice] = "No user found"
        render json: @no_user_found, each_serializer: UserSerializer
      else
-      render json: @user, each_serializer: UserSerializer
+      render json: @user, each_serializer: UserSerializer, adapter: :json
     end
    end
 
@@ -38,7 +42,7 @@ class Api::UsersController < ApiController
      rescue ActiveRecord::RecordNotFound
        render :json => {}, :status => :not_found
      end
-   
+
    end
 
    private

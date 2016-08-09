@@ -23,6 +23,7 @@ gem 'pry'
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'responders', '~>2.0'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'

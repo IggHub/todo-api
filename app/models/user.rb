@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   #include 'bcrypt'
   has_many :lists
   has_many :items, through: :lists
+#  before_action :authenticate_user!
   #has_secure_password
 
 #  validates :username, presence: true
@@ -21,5 +22,4 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 =end
-"Test 123"
 end

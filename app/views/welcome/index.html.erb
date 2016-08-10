@@ -8,17 +8,22 @@
           <p class = "lead"><span class="text-success">todo.</span><span class="text-warning">api.</span><span class="text-info">simplified.</span></p>
 
           <br>
+                <button class ="btn btn-primary"><%= link_to('Login', new_user_session_path)%></button> <!-- how can I make this link to sign_in?-->
+<!-- login form -->
 
+<!--
           <form class="form-inline">
             <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="</email?>">
+              <input type="email" class="form-control" id="user_email" placeholder="</email?>">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword2">/</label>
-              <input type="text" class="form-control" id="exampleInputPassword2" placeholder="</pass?>">
+              <input type="text" class="form-control" id="user_password" placeholder="</pass?>">
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
           </form>
+-->
+<!-- end login form -->
 
         </div>
 
@@ -30,7 +35,7 @@
           <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
         </div>
 
-      </div>
+      </div> <!-- /row -->
 
     <br><br><br><br><br>
 
@@ -86,3 +91,5 @@
 
     </div>
 </div>
+
+<%= link_to "Sign out", destroy_user_session_path, method: 'delete'%>

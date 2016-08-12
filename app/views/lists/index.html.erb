@@ -1,5 +1,6 @@
-<% @current_user.name %> <!-- why can't I display current user?-->
+<%= @user.name%>
+ <!-- why can't I display current user?-->
 <% @lists.each do |list| %>
-  <%= list %>
+  <%= list.name %><br>
 
 <% end %>

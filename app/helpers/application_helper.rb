@@ -10,4 +10,12 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def markdown(stuff)
+    renderer = Redcarpet::Render::HTML.new
+    extensions = {}
+    redcarpet = Redcarpet::Markdown.new(renderer,extensions)
+    (redcarpet.render stuff).html_safe
+  end
+
 end

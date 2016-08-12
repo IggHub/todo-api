@@ -24,6 +24,7 @@ gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'responders', '~>2.0'
 gem 'devise'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug'

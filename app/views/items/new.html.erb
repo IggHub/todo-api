@@ -1,0 +1,6 @@
+<%= form_for @item do |f| %>
+
+    Name: <%= f.text_area :name, size: "24x12" %>
+    List_id: <%= f.text_field :list_id %>
+    <%= f.submit %>
+<% end %>

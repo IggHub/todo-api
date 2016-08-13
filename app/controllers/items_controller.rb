@@ -11,6 +11,23 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+
+    if @item.save
+      flash[:notice] = "Item was saved!"
+      redirect_to @item
+    else
+      flash.now[:alert] = "ERROR. ERROR."
+      render :new
+    end
+  end
+
+
   def edit
     @item = Item.find(params[:id])
   end
@@ -29,6 +46,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name)
+    params.require(:item).permit(:name, :list_id)
   end
 end

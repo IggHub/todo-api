@@ -1,6 +1,15 @@
-<%= form_for @item do |f| %>
+<div class= "container">
+  <%= form_for @item do |f| %>
 
-    Name: <%= f.text_area :name, size: "24x12" %>
-    List_id: <%= f.text_field :list_id %>
+    <%= f.label :name %> :<br>
+    <%= f.text_area :name, size: "24x12" %><br>
+    <%= f.label :list_id %> <strong>id</strong> :<br>
+    <%= f.select :list_id,  options_for_select([['Home', 1], ['Personal', 2], ['Work', 3]]), {:include_blank => true} %><br>
+    <%= f.text_area :list_id %><br>
     <%= f.submit %>
+
 <% end %>
+<!-- need to create an additional icon to add new list if user wants a different list from given list! -->
+
+
+</div>
